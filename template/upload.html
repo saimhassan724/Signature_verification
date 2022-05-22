@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+<!doctype html>
+<div class="content-section">
+    <form method=post action="" enctype=multipart/form-data>
+    <fieldset class="form-group" >
+        <legend class="border-bottom mb-4"><strong>Home</strong></legend>
+        <div class="form-group">
+           <label  for="pwd">Upload Your Image :</label>
+           <div class="col-sm-10">
+                <input  accept="image/*" class="form-control" type=file name=file onchange="loadFile(event)" id="pwd">
+           </div>
+        </div>
+      
+
+   
+   <p><input type=submit name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+   <p> <button type=submit class="btn btn-success"><label for="file" style="cursor: pointer;" >Upload</label></button></p>
+   <p><img id="output" width="200" /></p>
+   <script>
+      var loadFile = function(event) {
+      	var image = document.getElementById('output');
+      	image.src = URL.createObjectURL(event.target.files[0]);
+      };
+   </script>
+   
+   <form> <output name="x" for="a b"></output> </form>
+</form>
+</fieldset>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+   <!-- <button type="button" class="btn btn-success btn-lg me-md-5"> -->
+      <!-- <form  method = "post">
+         <input type="button" id='script' name="submit" value="Predict!">
+      </form> -->
+   <!-- </button> -->
+   <a type="button" class="btn btn-primary" onclick=btnName() href="{{ url_for('predict') }}">Predict</a>
+
+   <script>
+      var btnName = function() {
+         $.get('/predict',
+           function(x) {
+             $("#resBtnHere").html(x);
+           }
+         )
+       }
+       btnName()
+   </script>
+   
+</div>
+
+</div>
+
+   <h3 id="resBtnHere">{{output}}</h3>
+
+{% endblock content %}

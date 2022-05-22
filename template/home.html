@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+   <fieldset class="form-group" >
+      <legend class="border-bottom mb-4"><strong>Home</strong></legend>
+      <div class="form-group">
+         <label  for="pwd">Upload Your Image :</label>
+         <div class="col-sm-10">
+            <input type="file" class="form-control" id="pwd">
+         </div>
+      </div>
+   </fieldset>
+  <!--
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Upload</button>
+      </div>
+    </div>
+  -->
+   <p><input type=submit  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+   <p> <button type="file" class="btn btn-success"><label for="pwd" style="cursor: pointer;" >Upload</label></button></p>
+   <p><img id="output" width="200" /></p>
+   <script>
+      var loadFile = function(event) {
+      	var image = document.getElementById('output');
+      	image.src = URL.createObjectURL(event.target.files[0]);
+      };
+   </script>
+
+
+   <!-- <div >
+      <img src="{{ user_image }}" alt="User Image" class="img-thumbnail" width="300" height="300" style="vertical-align:bottom">
+      </div> -->
+   <form> <output name="x" for="a b"></output> </form>
+
+   <button type="button" class="btn btn-success">Success
+      {% if fimage %}
+      <img src="./static/image/{{fimage}}" alt="No image">
+      {% endif %}
+   </button>
+
+</div>
+{% endblock content %}
